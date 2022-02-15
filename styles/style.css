@@ -71,7 +71,7 @@ body {
 h1 {
   color: #d90429;
   font-size: 3rem;
-  margin: 5rem 5rem 2rem;
+  margin: 5rem 2rem 10rem 2rem;
   text-align: center;
 }
 
@@ -152,5 +152,10 @@ li {
 
   ul {
     width: 80%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .content-wrapper {
+    width: 1080px;
   }
 }/*# sourceMappingURL=style.css.map */
