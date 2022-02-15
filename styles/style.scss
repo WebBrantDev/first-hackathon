@@ -5,8 +5,8 @@ body {
   font-family: "Raleway", sans-serif;
   background: linear-gradient(
       0deg,
-      rgba(50, 50, 50, 0.5),
-      rgba(50, 50, 50, 0.5)
+      rgba(50, 50, 50, 0.7),
+      rgba(50, 50, 50, 0.7)
     ),
     url("../images/beer-background.jpg");
   background-size: cover;
@@ -28,10 +28,18 @@ h1 {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 form {
-  position: absolute;
-  top: 18.75rem;
-  left: 9.375rem;
+  margin: 3rem;
+
+}
+
+input {
+  border-radius: 0.25rem;
+  padding: 0.25rem;
 }
 
 ul {
@@ -45,6 +53,7 @@ ul {
   height: 18.75rem;
   margin: 1rem;
   background-color: $card-color;
+  border-radius: 0.25rem;
 }
 
 li {
@@ -52,14 +61,28 @@ li {
   padding: 0 2rem;
 }
 
+.content-wrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .cta__button {
   width: 100%;
   background-color: $card-color;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 0.25rem;
+  border: 1px solid $title-color;
   margin-top: 1rem;
   font-weight: 700;
   color: $title-color;
+
+  &:hover {
+    color: $card-color;
+    background-color: $title-color;
+  }
 }
 
 .card-container {
@@ -68,22 +91,30 @@ li {
   align-items: center;
   flex-direction: column;
   width: 37.5rem;
-  position: absolute;
-  right: -3.75rem;
-  top: 12.5rem;
 }
-
 .card-name {
   font-size: 2rem;
   font-weight: 700;
   color: $title-color;
 }
 
-.card-brewery {
+@media screen and (min-width: 768px) {
+  .content-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  ul {
+    width: 80%;
+  }
+  
 }
 
-.card-phone {
-}
+// .card-brewery {
+// }
 
-.card-website {
-}
+// .card-phone {
+// }
+
+// .card-website {
+// }
