@@ -17,6 +17,7 @@ const submitHandler = (input) => {
       console.log(el.data.length);
       for (i = 0; i < el.data.length; i++) {
         const arr = [];
+        console.log(i);
 
         const name = el.data[i].name;
         const address = el.data[i].address;
@@ -29,11 +30,15 @@ const submitHandler = (input) => {
         const listEl = document.createElement("ul");
 
         function checkEmpty(array) {
-          for (i = 0; i < array.length; i++) {
-            if (array[i]) {
+          for (j = 0; j < array.length; j++) {
+            console.log("woooooooooooooo");
+            if (array[j]) {
               const listItem = document.createElement("li");
-              listItem.innerText = array[i];
+              console.log(array[j]);
+              listItem.innerText = array[j];
               listEl.appendChild(listItem);
+              const cardContainer = document.querySelector(".card-container");
+              cardContainer.appendChild(listEl);
             }
           }
 
@@ -51,10 +56,10 @@ const submitHandler = (input) => {
           // listEl.appendChild(addressEl);
           // listEl.appendChild(phoneEl);
           // listEl.appendChild(websiteEl);
-
-          const cardContainer = document.querySelector(".card-container");
-          cardContainer.appendChild(listEl);
         }
+
+        checkEmpty(arr);
+        console.dir(checkEmpty);
       }
     })
     .catch((err) => {
