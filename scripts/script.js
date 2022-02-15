@@ -72,10 +72,10 @@ axios
           const phoneEl = document.createElement("li");
           const websiteEl = document.createElement("li");
 
-          nameEl.classList.add(".card-name");
-          breweryEl.classList.add(".card-brewery");
-          phoneEl.classList.add(".card-phoneEl");
-          websiteEl.classList.add(".card-websiteEl");
+          nameEl.classList.add("card-name");
+          breweryEl.classList.add("card-brewery");
+          phoneEl.classList.add("card-phoneEl");
+          websiteEl.classList.add("card-websiteEl");
 
           nameEl.innerText = array[0];
           breweryEl.innerText = array[1];
