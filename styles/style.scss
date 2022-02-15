@@ -1,6 +1,31 @@
-@use './partials/reset';
+@use "./partials/reset";
+@use "./partials/colors" as *;
 
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+}
 h1 {
   color: red;
   font-size: 3rem;
+}
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  border-bottom: 2rem;
+  border: 2px red solid;
+  width: 60%;
+  height: 18.75rem;
+  margin: 1rem;
+  background-color: $card-color;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

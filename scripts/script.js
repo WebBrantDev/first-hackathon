@@ -1,4 +1,4 @@
-const baseURL = "https://api.openbrewerydb.org/breweries?per_page=10&by_city=";
+const baseURL = "https://api.openbrewerydb.org/breweries?by_city=";
 const form = document.querySelector(".cta__form");
 
 const submitHandler = (input) => {
@@ -14,53 +14,90 @@ const submitHandler = (input) => {
   axios
     .get(formattedRequest)
     .then((el) => {
+      let biggerArray = [];
+      const cardContainer = document.querySelector(".card-container");
+
       console.log(el.data.length);
       for (i = 0; i < el.data.length; i++) {
         const arr = [];
         console.log(i);
 
+        cardContainer.innerText = "";
+
         const name = el.data[i].name;
-        const address = el.data[i].address;
+        const breweryType = el.data[i].brewery_type;
+        const capitalizeFirstLetter = (string) =>
+          string.charAt(0).toUpperCase() + string.slice(1);
+        const breweryFinal = capitalizeFirstLetter(breweryType);
         const phone = el.data[i].phone;
         const website = el.data[i].website_url;
 
-        arr.push(name, address, phone, website);
-        console.log(arr);
-
-        const listEl = document.createElement("ul");
-
-        function checkEmpty(array) {
-          for (j = 0; j < array.length; j++) {
-            console.log("woooooooooooooo");
-            if (array[j]) {
-              const listItem = document.createElement("li");
-              console.log(array[j]);
-              listItem.innerText = array[j];
-              listEl.appendChild(listItem);
-              const cardContainer = document.querySelector(".card-container");
-              cardContainer.appendChild(listEl);
-            }
-          }
-
-          // const nameEl = document.createElement("li");
-          // const addressEl = document.createElement("li");
-          // const phoneEl = document.createElement("li");
-          // const websiteEl = document.createElement("li");
-
-          // nameEl.innerText = name;
-          // addressEl.innerText = address;
-          // phoneEl.innerText = phone;
-          // websiteEl.innerText = website;
-
-          // listEl.appendChild(nameEl);
-          // listEl.appendChild(addressEl);
-          // listEl.appendChild(phoneEl);
-          // listEl.appendChild(websiteEl);
+        if (name && breweryFinal && phone && website) {
+          arr.push(name, breweryFinal, phone, website);
+          biggerArray.push(arr);
+          console.log(biggerArray);
         }
 
-        checkEmpty(arr);
-        console.dir(checkEmpty);
+        // function checkEmpty(array) {
+        //   for (j = 0; j < array.length; j++) {
+        //     // console.log("woooooo");
+        //     if (array[j]) {
+
+        //     }
+        //   }
+
+        //   // const nameEl = document.createElement("li");
+        //   // const addressEl = document.createElement("li");
+        //   // const phoneEl = document.createElement("li");
+        //   // const websiteEl = document.createElement("li");
+
+        //   // nameEl.innerText = name;
+        //   // addressEl.innerText = address;
+        //   // phoneEl.innerText = phone;
+        //   // websiteEl.innerText = website;
+
+        //   // listEl.appendChild(nameEl);
+        //   // listEl.appendChild(addressEl);
+        //   // listEl.appendChild(phoneEl);
+        //   // listEl.appendChild(websiteEl);
+        // }
+
+        // checkEmpty(arr);
+        // console.dir(checkEmpty);
       }
+      let randomBrewery =
+        biggerArray[Math.floor(Math.random() * biggerArray.length)];
+      console.log(randomBrewery);
+      const generateBrewery = function (array) {
+        const listEl = document.createElement("ul");
+
+        const nameEl = document.createElement("li");
+        const breweryEl = document.createElement("li");
+        const phoneEl = document.createElement("li");
+        const websiteEl = document.createElement("li");
+
+        nameEl.classList.add(".card-name");
+        breweryEl.classList.add(".card-brewery");
+        phoneEl.classList.add(".card-phoneEl");
+        websiteEl.classList.add(".card-websiteEl");
+
+        nameEl.innerText = array[0];
+        breweryEl.innerText = array[1];
+        phoneEl.innerText = array[2];
+        websiteEl.innerText = array[3];
+
+        listEl.appendChild(nameEl);
+        listEl.appendChild(breweryEl);
+        listEl.appendChild(phoneEl);
+        listEl.appendChild(websiteEl);
+
+        // const listItem = document.createElement("li");
+        // listItem.innerText = array[j];
+        // listEl.appendChild(listItem);
+
+        cardContainer.appendChild(listEl);
+      };
+      generateBrewery(randomBrewery);
     })
     .catch((err) => {
       console.log(err);
